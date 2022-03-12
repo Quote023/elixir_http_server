@@ -1,18 +1,11 @@
+alias ElixirHttpServer.{Server}
+
 defmodule ElixirHttpServer do
-  @moduledoc """
-  Documentation for `ElixirHttpServer`.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    Server.run()
 
-  ## Examples
-
-      iex> ElixirHttpServer.hello()
-      :world
-
-  """
-  def hello do
-    :world
+    {:ok, self()}
   end
 end
