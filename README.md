@@ -1,21 +1,8 @@
-# ElixirHttpServer
+# Basic HTTP Server in Elixir
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `elixir_http_server` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:elixir_http_server, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/elixir_http_server>.
-
+![Elixir](https://img.shields.io/badge/elixir-%234B275F.svg?style=for-the-badge&logo=elixir&logoColor=white)
+[![Gitpod](https://img.shields.io/badge/gitpod-f06611.svg?style=for-the-badge&logo=gitpod&logoColor=white)](https://gitpod.io/#/github.com/Quote023/elixir_http_server)
+[![GitHub issues](https://img.shields.io/github/issues/Quote023/elixir_http_server)](https://github.com/Quote023/elixir_http_server/issues)
+[![GitHub forks](https://img.shields.io/github/forks/Quote023/elixir_http_server)](https://github.com/Quote023/elixir_http_server/network)
+[![GitHub stars](https://img.shields.io/github/stars/Quote023/elixir_http_server)](https://github.com/Quote023/elixir_http_server/stargazers)
+------------------
