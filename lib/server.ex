@@ -47,7 +47,7 @@ defmodule ElixirHttpServer.Server do
     IO.puts("Dados Recebidos:")
     IO.puts(to_string(data) <> "\r\n")
 
-    message = ":^)\r\n"
+    message = "<div style=\"font-size: 30rem\">:^)</div>\r\n"
 
     payload =
       "HTTP/1.0 200 OK\r\n" <>
