@@ -4,7 +4,9 @@ defmodule ElixirHttpServer do
   use Application
 
   def start(_type, _args) do
-    Server.run()
+    IO.inspect(MovieDB.makeDb())
+
+    # Server.run()
 
     {:ok, self()}
   end
