@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive-In do 🍯</title>
+</head>
+
+<body>
+  <h1>{{Map.get(ctx,:title, "Titulo não definido")}}</h1>
+  <h2>
+    Olá, {{
+    if Map.has_key?(ctx,:name) do
+    """
+    <span>
+      #{ctx.name}
+      <form method="post" action="/delete-name">
+        <input type="submit" value="limpar nome"></input>
+      </form>
+    </span>
+    """
+    else
+    """
+    <form style="display: inline" method="post" action="/name">
+      <input placeholder="insira seu nome" type="text" id="name" name="name"></input>
+      <input type="submit" value="salvar"></input>
+    </form>
+    """
+    end
+    }}
+  </h2>
+  <div>
+    A hora certa é: {{
+    Calendar.strftime(ctx.date, "%X do dia %d/%m/%y")
+    }}
+  </div>
+</body>
+
+</html>

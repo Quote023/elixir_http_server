@@ -3,9 +3,10 @@ defmodule Movie do
 end
 
 defmodule MovieDB do
+  @dbfolder Path.join(:code.priv_dir(:elixir_http_server), "db/movies.txt")
+
   def makeDb() do
-    path = Path.join(:code.priv_dir(:elixir_http_server), "db/movies.txt")
-    {:ok, file} = File.read(path)
+    {:ok, file} = File.read(@dbfolder)
 
     file
     |> String.split("\n\n", trim: true)

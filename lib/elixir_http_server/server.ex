@@ -1,3 +1,5 @@
+alias ElixirHttpServer.{HttpResponse}
+
 defmodule ElixirHttpServer.Server do
   @type socket :: :gen_tcp.socket()
   @options [
@@ -13,52 +15,61 @@ defmodule ElixirHttpServer.Server do
     handle_listen(port)
   end
 
-  def handle_listen(port) do
+  def handle_listen(port, initial_state \\ %{common: %{}}) do
     case :gen_tcp.listen(port, @options) do
-      {:ok, socket} -> handle_accept(socket)
+      {:ok, socket} -> handle_accept(socket, port, initial_state)
       {:error, reason} -> handle_error(reason, "falha ao inicializar o servidor")
     end
   end
 
-  def handle_accept(listening_socket) do
+  def handle_accept(listening_socket, port, state) do
     IO.puts("aceitando conexão...")
 
     case :gen_tcp.accept(listening_socket) do
       {:ok, socket} ->
-        handle_receive(socket)
+        state =
+          case handle_receive(socket, state) do
+            {:update_state, new_state} -> new_state
+            _ -> state
+          end
+
         # Reinicia recursivamente pra atender a proxima requisição
-        handle_accept(listening_socket)
+        handle_accept(listening_socket, port, state)
 
       {:error, reason} ->
         handle_error(reason, "falha ao aceita socket")
     end
   end
 
-  def handle_receive(client) do
+  def handle_receive(client, state) do
     IO.puts("recebendo dados...")
 
-    case :gen_tcp.recv(client, 0) do
-      {:ok, data} -> handle_data(client, data)
+    case :gen_tcp.recv(client, 0, 5000) do
+      {:ok, data} -> handle_data(client, data, state)
       {:error, reason} -> handle_error(reason, "falha ao receber dados")
     end
   end
 
-  def handle_data(client, data) do
+  def handle_data(client, request_str, state) do
     IO.puts("Dados Recebidos:")
-    IO.puts(to_string(data) <> "\r\n")
+    IO.puts(request_str <> "\r\n")
 
-    message = "<div style=\"font-size: 30rem\">:^)</div>\r\n"
+    {response_data, new_state} =
+      request_str
+      |> RequestParser.parse()
+      |> Router.handle_route(state)
 
-    payload =
-      "HTTP/1.0 200 OK\r\n" <>
-        "Content-Type: text/html\r\n" <>
-        "Content-Length: #{byte_size(message)}" <>
-        "\r\n\r\n" <>
-        message
+    response = HttpResponse.new(response_data, 200, %{"Set-Cookie" => "sessionId=38afes7a8"})
 
-    case :gen_tcp.send(client, payload) do
-      :ok -> handle_close(client)
-      {:error, reason} -> handle_error(reason, "falha ao responder requisição")
+    case :gen_tcp.send(client, response) do
+      :ok ->
+        case handle_close(client) do
+          :ok -> {:update_state, new_state}
+          :error -> :error
+        end
+
+      {:error, reason} ->
+        handle_error(reason, "falha ao responder requisição")
     end
   end
 
