@@ -1,41 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Cabaré Movies</title>
+	</head>
+	<body>
+		<header>
+			<img class="logoimg" src="honeypng.png" alt="Honey Image" />
+			<div>
+				<div class="logo">Cabaré Movies</div>
+				<div class="slogan">Os filmes mais nada a ver do momento</div>
+			</div>
+		</header>
+		<main class="container content">
+			<form
+				action="GET"
+				action="https://8000-quote023-elixirhttpserve-bay86c4uii7.ws-us38.gitpod.io/"
+			>
+				<div class="container">
+					<input
+						id="search"
+						name="search"
+						type="text"
+						placeholder="Pesquise seus filmes favoritos"
+					/>
+				</div>
+				<div class="container">
+					<input
+						class="searchButton"
+						type="submit"
+						value="Pesquisar"
+					/>
+				</div>
+			</form>
+			<div class="results">
+				<h2>7 Resultados de Busca</h2>
+				<div class="movieresults">
+					if Map.has_key?(ctx,:name) do """
+					<div class="moviebox">
+						<img class="movieimg" src="{ctx.imgurl}" alt="filme" />
+						<span class="movietitle container">
+							<p class="movieprop">{ctx.name}</p>
+						</span>
+						<div class="movieproparea">
+							<p class="movieprop">Diretor: {ctx.director}</p>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drive-In do 🍯</title>
-</head>
+							<p class="movieprop">Ano: {ctx.releaseddate}</p>
 
-<body>
-  <h1>{{Map.get(ctx,:title, "Titulo não definido")}}</h1>
-  <h2>
-    Olá, {{
-    if Map.has_key?(ctx,:name) do
-    """
-    <span>
-      #{ctx.name}
-      <form method="post" action="/delete-name">
-        <input type="submit" value="limpar nome"></input>
-      </form>
-    </span>
-    """
-    else
-    """
-    <form style="display: inline" method="post" action="/name">
-      <input placeholder="insira seu nome" type="text" id="name" name="name"></input>
-      <input type="submit" value="salvar"></input>
-    </form>
-    """
-    end
-    }}
-  </h2>
-  <div>
-    A hora certa é: {{
-    Calendar.strftime(ctx.date, "%X do dia %d/%m/%y")
-    }}
-  </div>
-</body>
-
+							<p class="movieprop hiddenmovieprop">
+								Classificação: {ctx.classification}
+							</p>
+							<p class="movieprop hiddenmovieprop">
+								Gêmero: {ctx.gender}
+							</p>
+						</div>
+					</div>
+					""" else do """ """
+				</div>
+			</div>
+		</main>
+		<footer>
+			<h1>Footer</h1>
+		</footer>
+	</body>
 </html>
