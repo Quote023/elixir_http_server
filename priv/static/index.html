@@ -41,20 +41,20 @@
 				<div class="movieresults">
 					if Map.has_key?(ctx,:name) do """
 					<div class="moviebox">
-						<img class="movieimg" src="{ctx.imgurl}" alt="filme" />
+						<img class="movieimg" src="{{ctx.imgurl}}" alt="filme" />
 						<span class="movietitle container">
-							<p class="movieprop">{ctx.name}</p>
+							<p class="movieprop">{{ctx.name}}</p>
 						</span>
 						<div class="movieproparea">
-							<p class="movieprop">Diretor: {ctx.director}</p>
+							<p class="movieprop">Diretor: {{ctx.director}}</p>
 
-							<p class="movieprop">Ano: {ctx.releaseddate}</p>
+							<p class="movieprop">Ano: {{ctx.releaseddate}}</p>
 
 							<p class="movieprop hiddenmovieprop">
-								Classificação: {ctx.classification}
+								Classificação: {{ctx.classification}}
 							</p>
 							<p class="movieprop hiddenmovieprop">
-								Gêmero: {ctx.gender}
+								Gêmero: {{ctx.gender}}
 							</p>
 						</div>
 					</div>
