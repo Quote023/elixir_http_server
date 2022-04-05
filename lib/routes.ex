@@ -34,7 +34,17 @@ defmodule Router do
 
       true ->
         page_context =
-          Map.merge(main_context, %{title: "Hora Certa do 🍯", date: DateTime.utc_now()})
+          Map.merge(main_context, %{
+            title: "Hora Certa do 🍯",
+            date: DateTime.utc_now(),
+            imgurl:
+              "https://i.guim.co.uk/img/media/eda873838f940582d1210dcf51900efad3fa8c9b/0_469_7360_4417/master/7360.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=4136d0378a9d158831c65d13dcc16389",
+            name: "Filme Legal",
+            director: "Katy Perry",
+            releaseyear: "2025",
+            classification: "+65",
+            gender: "Feminino"
+          })
 
         html =
           read_static_file("index.html")

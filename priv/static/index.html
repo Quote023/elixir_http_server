@@ -5,11 +5,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
-		<title>Cabaré Movies</title>
+		<title>Cabaré Movies🍯</title>
 	</head>
+
 	<body>
 		<header>
-			<img class="logoimg" src="honeypng.png" alt="Honey Image" />
+			<img class="logoimg" src="./honeypng.png" alt="Honey Image" />
 			<div>
 				<div class="logo">Cabaré Movies</div>
 				<div class="slogan">Os filmes mais nada a ver do momento</div>
@@ -39,26 +40,35 @@
 			<div class="results">
 				<h2>7 Resultados de Busca</h2>
 				<div class="movieresults">
-					if Map.has_key?(ctx,:name) do """
+					{{
+						cond do
+						Map.has_key?(ctx,:name) ->
+						"""
 					<div class="moviebox">
-						<img class="movieimg" src="{{ctx.imgurl}}" alt="filme" />
+						<img
+							class="movieimg"
+							src="#{ctx.imgurl}"
+							alt="filme"
+						/>
 						<span class="movietitle container">
-							<p class="movieprop">{{ctx.name}}</p>
+							<p class="movieprop">#{ctx.name}</p>
 						</span>
 						<div class="movieproparea">
-							<p class="movieprop">Diretor: {{ctx.director}}</p>
+							<p class="movieprop">Diretor: #{ctx.director}</p>
 
-							<p class="movieprop">Ano: {{ctx.releaseyear}}</p>
+							<p class="movieprop">Ano: #{ctx.releaseyear}</p>
 
 							<p class="movieprop hiddenmovieprop">
-								Classificação: {{ctx.classification}}
+								Classificação: #{ctx.classification}
 							</p>
 							<p class="movieprop hiddenmovieprop">
-								Gêmero: {{ctx.gender}}
+								Gêmero: #{ctx.gender}
 							</p>
 						</div>
 					</div>
-					""" else do """ """
+					"""
+					true -> ""
+					end}}
 				</div>
 			</div>
 		</main>
