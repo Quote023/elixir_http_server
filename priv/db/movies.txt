@@ -1,15 +1,132 @@
 NOME BATMAN
 ANO 1989
-POSTER http://pudim.com.br
 FAIXAETARIA 13 ANOS
+POSTER https://static.wikia.nocookie.net/dublagempedia/images/1/18/3243abe41f9e953a2647fc00b97655c66e00704f.jpeg/revision/latest?cb=20180403174919&path-prefix=pt-br
 GENERO ACÃO, AVENTURA
 DIRETOR TIM BURTON
-
 
 NOME STAR WARS
 ANO 1977
 FAIXAETARIA 13 ANOS
-POSTER http://pudim.com.br
+POSTER https://i.pinimg.com/originals/07/4e/f4/074ef47606fac5a3e4607fbc8254538c.jpg
 GENERO ACÃO, AVENTURA, FANTASIA
 DIRETOR GEORGE LUCAS
 
+NOME CLUBE DA LUTA
+ANO 1999
+FAIXAETARIA 18
+POSTER https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg
+GENERO DRAMA
+DIRETOR DAVID FINCHER
+
+NOME THE GREATEST SHOWMAN
+ANO 2017
+FAIXAETARIA 0
+POSTER https://img.elo7.com.br/product/original/1D04C3F/poster-o-rei-do-show-tamanho-90x-0-cm-lo00-poster-o-rei-do-show.jpg
+GENERO MUSICAL
+DIRETOR MICHAEL GRACEY
+
+NOME INTERESTELAR
+ANO 2014
+FAIXAETARIA 10
+POSTER https://cdn.ome.lt/legacy/images/galerias/Interstellar/Interstellar-poster-11ago2014-01.jpg
+GENERO AVENTURA
+DIRETOR CHRISTOPHER NOLAN
+
+NOME MEGAMENTE
+ANO 2010
+FAIXAETARIA 0
+POSTER http://2.bp.blogspot.com/_vqr586h0UZM/TPe6E1zt-LI/AAAAAAAAD4g/NTBR8-9H7g4/s1600/megamind_10.jpg
+GENERO ANIMAÇÃO
+DIRETOR TOM MCGRATH
+
+NOME SHREK
+ANO 2001
+FAIXAETARIA 0
+POSTER https://br.web.img3.acsta.net/r_1280_720/medias/nmedia/18/91/54/04/20150812.jpg
+GENERO ANIMAÇÃO
+DIRETOR ANDREW ADAMSON
+
+NOME SENHOR DOS ANÉIS
+ANO 2001
+FAIXAETARIA 12
+POSTER https://img.elo7.com.br/product/main/2692717/poster-o-senhor-dos-aneis-a-sociedade-do-anel-lo02-90x60-cm-presente-geek.jpg
+GENERO FANTASIA
+DIRETOR PETER JACKSON
+
+NOME DUNA
+ANO 2021
+FAIXAETARIA 14
+POSTER https://uauposters.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/2/327420211103-uau-posters-dune-duna-filmes.jpg
+GENERO AÇÃO
+DIRETOR DENIS VILLENEUVE
+
+NOME HOJE EU QUERO VOLTAR SOZINHO
+ANO 2014
+FAIXAETARIA 12
+POSTER https://http2.mlstatic.com/D_NQ_NP_664694-MLB31071691966_062019-O.jpg
+GENERO ROMANCE
+DIRETOR DANIEL RIBEIRO
+
+NOME GIGANTES DE AÇO
+ANO 2011
+FAIXAETARIA 12
+POSTER https://www.themoviedb.org/t/p/original/mGE53t24Hkrs1Z5TFkYoapd0alK.jpg
+GENERO DRAMA, AÇÃO
+DIRETOR SHAWN LEVY
+
+NOME DJANGO
+ANO 2012
+FAIXAETARIA 18
+POSTER https://uauposters.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/0/4/049320140408-posters-filmes-tarantino-django.jpg
+GENERO DRAMA, WESTERN
+DIRETOR QUENTIN TARANTINO
+
+NOME AVATAR
+ANO 2009
+FAIXAETARIA 14
+POSTER https://http2.mlstatic.com/D_NQ_NP_13835-MLB4594260504_072013-O.jpg
+GENERO AVENTURA, AÇÃO
+DIRETOR JAMES CAMERON
+
+NOME WHIPLASH
+ANO 2014
+FAIXAETARIA 12
+POSTER https://br.web.img3.acsta.net/r_1280_720/pictures/14/09/26/17/53/345974.jpg
+GENERO DRAMA
+DIRETOR DAMIEN CHAZELLE
+
+NOME THE ROCKY HORROR PICTURE SHOW
+ANO 1975
+FAIXAETARIA 18
+POSTER https://upload.wikimedia.org/wikipedia/pt/f/f0/The_rocky_horror_picture_show_poster.jpg
+GENERO MUSICAL, TERROR
+DIRETOR JIM SHARMAN
+
+NOME GHOST IN THE SHELL
+ANO 1995
+FAIXAETARIA 14
+POSTER https://i.pinimg.com/originals/07/5d/9e/075d9e45a92de562a6af24afc85f5b7c.jpg
+GENERO ANIMÇÃO, AÇÃO
+DIRETOR MAMORU OSHII
+
+NOME A LENDA DOS GUARDIÕES
+ANO 2010
+FAIXAETARIA 10
+POSTER https://vejasp.abril.com.br/wp-content/uploads/2016/12/a-lenda-dos-guardic3b5es-poster-final-large.jpg
+GENERO ANIMAÇÃO, AÇÃO
+DIRETOR ZACK SNYDER
+
+NOME ALIEN
+ANO 1979
+FAIXAETARIA 14
+POSTER https://images.photowall.com/products/59754/alien.jpg?h=699&q=85
+GENERO TERROR, FICÇÃO
+DIRETOR RIDLEY SCOTT
+
+NOME THE FRENCH DISPATCH
+ANO 2021
+FAIXAETARIA 14
+POSTER https://uploads.jovemnerd.com.br/wp-content/uploads/2020/02/poster-wen-anderson-french-dispatch.jpeg
+GENERO DRAMA, COMEDIA
+DIRETOR WES ANDERSON
