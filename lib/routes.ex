@@ -1,17 +1,19 @@
 defmodule Router do
   def handle_route(request, state \\ %{common: %{}}) do
     # main_context => informações globais do servidor + informações da sessão
-    main_context = Map.merge(Map.get(state, :common, %{}), Map.get(state, "{USER_ID_HERE}", %{}))
-    IO.inspect(main_context)
+    main_context =
+      Map.get(state, :common, %{})
+      |> Map.merge(Map.get(state, :system, %{}))
+      |> Map.put(:request, request)
+
+    # |> Map.merge(Map.get(state, "{USER_ID_HERE}", %{}))
+
+    IO.inspect(request)
 
     cond do
-      String.contains?(request[:raw], "GET /favicon.ico") ->
-        {read_static_file("favicon.ico"), state}
-
-      String.contains?(request[:raw], "POST /name ") ->
+      is_post(request) and request.endpoint === "/name" ->
         name =
-          String.split(request[:raw], "\r\n\r\n")
-          |> Enum.at(1)
+          request.body
           |> String.split("\r\n", trim: true)
           |> Enum.find(fn txt -> String.contains?(txt, "name=") end)
           |> String.split("=")
@@ -24,7 +26,7 @@ defmodule Router do
           new_state
         }
 
-      String.contains?(request[:raw], "POST /delete-name ") ->
+      is_post(request) and request.endpoint === "/delete-name" ->
         {_, new_state} = pop_in(state, [:common, :name])
 
         {
@@ -32,26 +34,25 @@ defmodule Router do
           new_state
         }
 
+      is_get(request) and (request.ext === ".html" or request.ext === "") ->
+        file_path = if request[:endpoint] === "/", do: "index.html", else: request[:endpoint]
+        file_data = read_static_file(file_path)
+
+        data =
+          with file when is_binary(file) <- Map.get(file_data, :file, nil) do
+            html = TemplateParser.parse(file, main_context)
+            %{content: html}
+          else
+            _ -> file_data
+          end
+
+        {data, state}
+
+      request[:method] === "GET" ->
+        {read_static_file(request[:endpoint]), state}
+
       true ->
-        page_context =
-          Map.merge(main_context, %{
-            title: "Hora Certa do 🍯",
-            date: DateTime.utc_now(),
-            imgurl:
-              "https://i.guim.co.uk/img/media/eda873838f940582d1210dcf51900efad3fa8c9b/0_469_7360_4417/master/7360.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=4136d0378a9d158831c65d13dcc16389",
-            name: "Filme Legal",
-            director: "Katy Perry",
-            releaseyear: "2025",
-            classification: "+65",
-            gender: "Feminino"
-          })
-
-        html =
-          read_static_file("index.html")
-          |> Map.get(:file)
-          |> TemplateParser.parse(page_context)
-
-        {%{content: html}, state}
+        {%{content: "<h1>404<h1>"}, state}
     end
   end
 
@@ -68,11 +69,33 @@ defmodule Router do
   end
 
   defp read_static_file(name) do
-    path = Path.join(:code.priv_dir(:elixir_http_server), "static/#{name}")
+    path =
+      Path.join(
+        :code.priv_dir(:elixir_http_server),
+        "static/#{name |> String.split("?") |> Enum.at(0) |> String.trim("/")}"
+      )
 
-    {:ok, file} = File.read(path)
-    {:ok, info} = File.stat(path)
+    case File.read(path) do
+      {:ok, file} ->
+        case File.stat(path) do
+          {:ok, info} ->
+            %{file: file, info: info, path: path}
 
-    %{file: file, info: info, path: path}
+          {:error, reason} ->
+            %{
+              content: "<header><h1>Erro Inesperado</h1><h2>#{reason}</h2></header>",
+              status_code: 500
+            }
+        end
+
+      {:error, reason} ->
+        %{
+          content: "<header><h1>Um Erro Aconteceu</h1><h2>#{reason}</h2></header>",
+          status_code: 404
+        }
+    end
   end
+
+  defp is_get(request), do: Map.get(request, :method, "") === "GET"
+  defp is_post(request), do: Map.get(request, :method, "") === "POST"
 end

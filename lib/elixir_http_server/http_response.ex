@@ -13,6 +13,7 @@ defmodule ElixirHttpServer.HttpResponse do
         ".webp" -> "image/webp"
         ".bmp" -> "image/bmp"
         ".ico" -> "image/vnd.microsoft.icon"
+        ".css" -> "text/css"
         _ -> "application/octet-stream"
       end
 

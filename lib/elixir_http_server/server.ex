@@ -12,7 +12,13 @@ defmodule ElixirHttpServer.Server do
   def run(port \\ 8000) do
     IO.puts(IO.ANSI.clear() <> IO.ANSI.home())
     IO.puts("[SERVER] iniciando servidor na porta #{port}")
-    handle_listen(port)
+    IO.puts("[DB] iniciando banco de dados")
+    find_movie = fn name -> MovieDB.makeDb() |> MovieDB.findInDb(name) end
+
+    handle_listen(port, %{
+      common: %{},
+      system: %{find_movie: find_movie, movies: MovieDB.makeDb()}
+    })
   end
 
   def handle_listen(port, initial_state \\ %{common: %{}}) do

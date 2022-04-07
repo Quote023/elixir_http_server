@@ -1,79 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<title>Cabaré Movies🍯</title>
-	</head>
 
-	<body>
-		<header>
-			<img class="logoimg" src="./honeypng.png" alt="Honey Image" />
-			<div>
-				<div class="logo">Cabaré Movies</div>
-				<div class="slogan">Os filmes mais nada a ver do momento</div>
-			</div>
-		</header>
-		<main class="container content">
-			<form
-				action="GET"
-				action="https://8000-quote023-elixirhttpserve-bay86c4uii7.ws-us38.gitpod.io/"
-			>
-				<div class="container">
-					<input
-						id="search"
-						name="search"
-						type="text"
-						placeholder="Pesquise seus filmes favoritos"
-					/>
-				</div>
-				<div class="container">
-					<input
-						class="searchButton"
-						type="submit"
-						value="Pesquisar"
-					/>
-				</div>
-			</form>
-			<div class="results">
-				<h2>7 Resultados de Busca</h2>
-				<div class="movieresults">
-					{{
-						cond do
-						Map.has_key?(ctx,:name) ->
-						"""
-					<div class="moviebox">
-						<img
-							class="movieimg"
-							src="#{ctx.imgurl}"
-							alt="filme"
-						/>
-						<span class="movietitle container">
-							<p class="movieprop">#{ctx.name}</p>
-						</span>
-						<div class="movieproparea">
-							<p class="movieprop">Diretor: #{ctx.director}</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Honey Movies🍯</title>
+</head>
 
-							<p class="movieprop">Ano: #{ctx.releaseyear}</p>
+<body>
+  <header>
+    <img class="logoimg" src="./honeypng.png" alt="Honey Image" />
+    <div>
+      <div class="logo">Honey Movies</div>
+      <div class="slogan">Os filmes mais nada a ver do momento</div>
+    </div>
+  </header>
+  <main class="container content">
+    <form action="/index.html" method="GET">
+      <div class="container">
+        <input class="search" name="movie" type="text" placeholder="Pesquise seus filmes favoritos" value="{{Map.get(ctx.request.get, "movie", "")}}" />
+      </div>
+      <div class="container">
+        <input class="searchButton" type="submit" value="Pesquisar" />
+      </div>
+    </form>
+    <div class="results">
+      <h2>{{
+        filtro = Map.get(ctx.request.get, "movie", "") |> String.upcase()
+        ctx.movies
+        |> Enum.filter(fn movie -> String.contains?(movie["NOME"],filtro) end)
+        |> length()
+        }} Resultados de Busca</h2>
+      <div class="movieresults">
+        {{
+        filtro = Map.get(ctx.request.get, "movie", "") |> String.upcase()
+        ctx.movies
+        |> Enum.filter(fn movie -> String.contains?(movie["NOME"],filtro) end)
+        |> Enum.map(fn movie ->
+        """
+        <div class="moviebox">
+          <img class="movieimg" src="#{movie["POSTER"]}" alt="filme" />
+          <span class="movietitle container">
+            <p class="movieprop">#{movie["NOME"]}</p>
+          </span>
+          <div class="movieproparea">
+            <p class="movieprop">Diretor: #{movie["DIRETOR"]}</p>
 
-							<p class="movieprop hiddenmovieprop">
-								Classificação: #{ctx.classification}
-							</p>
-							<p class="movieprop hiddenmovieprop">
-								Gêmero: #{ctx.gender}
-							</p>
-						</div>
-					</div>
-					"""
-					true -> ""
-					end}}
-				</div>
-			</div>
-		</main>
-		<footer>
-			<h1>Footer</h1>
-		</footer>
-	</body>
+            <p class="movieprop">Ano: #{movie["ANO"]}</p>
+
+            <p class="movieprop hiddenmovieprop">
+              Classificação: #{movie["FAIXAETARIA"]}
+            </p>
+            <p class="movieprop hiddenmovieprop">
+              Gêmero: #{movie["GENERO"]}
+            </p>
+          </div>
+        </div>
+        """
+        end)
+        }}
+      </div>
+    </div>
+  </main>
+  <footer>
+    <h1>Footer</h1>
+  </footer>
+</body>
+
 </html>

@@ -15,6 +15,6 @@ defmodule TemplateParser do
       |> Code.eval_string(ctx: ctx)
       |> elem(0)
 
-    String.replace(html, code, result)
+    String.replace(html, code, result |> to_string())
   end
 end

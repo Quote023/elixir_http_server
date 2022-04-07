@@ -1,21 +1,54 @@
 defmodule RequestParser do
   def parse(request) do
-    req = request|> String.split("\r\n\r\n", trim: true)
+    # separar header do body
+    req = request |> String.split("\r\n\r\n", trim: true)
+    body = Enum.at(req, 1, "")
+
     Enum.at(req, 0)
-    |>String.split("\r\n", trim: true)
-    |>Enum.map(fn x -> String.split(x, ":", parts: 2) end)
-    |>Map.new(fn x ->
-        if (length(x) == 1 ) do
-            [key,value, value2] = String.split(List.first(x), " ", parts: 3)
-            {key, [value, value2]}
+    |> parse_header()
+    |> Map.new()
+    |> Map.put(:raw, request)
+    |> Map.put(:body, body)
+  end
 
-        else
-          [key,value] = x
+  def parse_header(header_str) do
+    header_str
+    |> String.split("\r\n", trim: true)
+    |> Enum.flat_map(fn x ->
+      case String.split(x, ":", parts: 2) do
+        [first_line] ->
+          [method, endpoint, protocol] = String.split(first_line, " ")
+          path = endpoint |> String.split("?") |> Enum.at(0)
+
+          [
+            {:method, method},
+            {:endpoint, path},
+            {:protocol, protocol},
+            {:ext, Path.extname(path)},
+            {:get, parse_params(endpoint)}
+          ]
+
+        [key, value] ->
+          [{key, value}]
+      end
+    end)
+  end
+
+  def parse_params(endpoint) do
+    case String.contains?(endpoint, "?") do
+      true ->
+        endpoint
+        |> String.split("?")
+        |> Enum.at(1)
+        |> String.split("&", trim: true)
+        |> Enum.map(fn opt ->
+          [key, value] = opt |> String.replace(["/", "?"], "") |> String.split("=")
           {key, value}
-          end
-    end )
+        end)
+        |> Map.new()
 
-  |>Map.put(:raw, request)
-  |>Map.put(:body, Enum.at(req, 1, ""))
+      false ->
+        %{}
+    end
   end
 end

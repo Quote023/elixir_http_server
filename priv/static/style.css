@@ -1,162 +1,162 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
-    z-index: 3;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  z-index: 3;
 }
 
 body {
-    background-color: #525252;
+  background-color: #525252;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
 }
 
 header {
-    background-color: #313131;
-    width: 100%;
-    height: 120px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding: 0px 70px;
-    color: #fff;
-    margin-bottom: 30px;
+  background-color: #313131;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 0px 70px;
+  color: #fff;
+  margin-bottom: 30px;
 }
 
 .logoimg {
-    height: 70px;
-    margin-right: 10px;
+  height: 70px;
+  margin-right: 10px;
 }
 
 .logo {
-    font-size: 50px;
-    font-weight: 700;
+  font-size: 50px;
+  font-weight: 700;
 }
 
 .slogan {
-    font-size: 18px;
-    font-weight: 300;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 .content {
-    min-height: 80vh;
-    display: block;
+  min-height: 80vh;
+  display: block;
 }
 
 
-#search {
-    width: 460px;
-    background-color: #313131;
-    border: none;
-    text-align: center;
-    height: 50px;
-    border-radius: 5px;
-    font-size: 30px;
-    font-weight: 300;
-    color: #fff;
+.search {
+  width: 460px;
+  background-color: #313131;
+  border: none;
+  text-align: center;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 30px;
+  font-weight: 300;
+  color: #fff;
 }
 
 .searchButton {
-    background-color: #F6B100;
-    height: 40px;
-    width: 180px;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    color: #fff;
-    font-weight: 500;
+  background-color: #F6B100;
+  height: 40px;
+  width: 180px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .searchButton:hover {
-    cursor: pointer ;
-    background-color: #FFBF1B
+  cursor: pointer;
+  background-color: #FFBF1B
 }
 
 .searchButton:active {
-    background-color: #DC9E01;
+  background-color: #DC9E01;
 }
 
 .results {
-    background-color: #313131;
-    max-width: fit-content;
-    max-height: fit-content;
-    margin: auto;
-    text-align: center;
-    padding: 20px;
+  background-color: #313131;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
 }
 
 .movieresults {
-    
-    margin: auto;
-    justify-content: center;
-    display: grid;
-    gap: 20px;
-    padding: 20px;
-    grid-template-columns: auto auto auto;
+
+  margin: auto;
+  justify-content: center;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: auto auto auto;
 }
 
 .moviebox {
-    color: #313131;
-    background-color: red;
-    width: 200px;
-    height: 300px;
-    position: relative;
+  color: #313131;
+  background-color: red;
+  width: 200px;
+  height: 300px;
+  position: relative;
 }
 
 .movieimg {
-    height: 100%;
-    z-index: 0;
-    width: 100%;
-    object-fit: fill;
-    position: absolute;
-    left: 0;
+  height: 100%;
+  z-index: 0;
+  width: 100%;
+  object-fit: fill;
+  position: absolute;
+  left: 0;
 }
 
 
 .movietitle {
-    color: #313131;
-    font-weight: 600;
-    
+  color: #313131;
+  font-weight: 600;
+
 }
 
 .movieprop {
-    display: flex;
-    color: #313131;
-    z-index: 3;
+  display: flex;
+  color: #313131;
+  z-index: 3;
 }
 
 .movieproparea {
-    padding: 2px 3px;
-    font-weight: 600;
-    bottom: 0;
-    z-index: 5;
-    position: absolute;
-    width: 100%;
-    background: rgba( 255, 255, 255, 0.35 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 1.5px );
-    -webkit-backdrop-filter: blur( 1.5px );
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+  padding: 2px 3px;
+  font-weight: 600;
+  bottom: 0;
+  z-index: 5;
+  position: absolute;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hiddenmovieprop {
-    display: none;
+  display: none;
 }
 
 .moviebox:hover .hiddenmovieprop {
-    display: flex;
+  display: flex;
 }
 
 footer {
-    background-color: #313131;
-    width: 100%;
-    height: 120px;
+  background-color: #313131;
+  width: 100%;
+  height: 120px;
 }
