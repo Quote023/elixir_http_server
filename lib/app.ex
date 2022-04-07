@@ -4,7 +4,11 @@ defmodule ElixirHttpServer do
   use Application
 
   def start(_type, _args) do
-    Server.run()
+
+    MovieDB.makeDb()
+|> MovieDB.findInDb("star wars")
+|> IO.inspect()
+   # Server.run()
 
     {:ok, self()}
   end
